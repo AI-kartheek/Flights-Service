@@ -3,6 +3,10 @@
 
 # Project Setup
 * Download this template and open in any editor.
+* install the packages required for this project - 
+    ```
+    npm i 
+    ```
 * In the root directory create a `.env` file and add the following env variables.
     ```
     PORT = <port number of your choice>
@@ -11,29 +15,12 @@
     ```
     PORT = 3000
     ```
-* Inside the `src/config` folder createa  file named as `config.json` and edit the following code - 
+* Go inside the `src` folder and execute the following command - 
     ```
-    {
-        "development": {
-            "username": "root",
-            "password": null,
-            "database": "database_development",
-            "host": "127.0.0.1",
-            "dialect": "mysql"
-        },
-        "test": {
-            "username": "root",
-            "password": null,
-            "database": "database_test",
-            "host": "127.0.0.1",
-            "dialect": "mysql"
-        },
-        "production": {
-            "username": "root",
-            "password": null,
-            "database": "database_production",
-            "host": "127.0.0.1",
-            "dialect": "mysql"
-        }
-    }
+    npx sequelize init
+    ```
+* By executing the above command yo uwill get `migrations` and `seeders` folders along with a `config.json` inside the `config` foder.
+* To run the server execute - 
+    ```
+    npm run dev
     ```
