@@ -24,3 +24,8 @@
     ```
     npm run dev
     ```
+
+# ToDo
+* `index.js` is not created for `errors` folder.
+* I want to know how migrations work.
+* centralize raw strings used in the project.
