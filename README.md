@@ -30,6 +30,7 @@
 * I want to know how migrations work.
 * centralize raw strings used in the project.
 * check is it possible to centralize the error types especially from the service file.
+* use either single or double quotes for a string wrapper. modify all the files that requires changes.
 
 # Doubts
 * what happens when we rename the id attribute to lets say cityId in cities table. will this impact anything in future (eg while associating tables)
