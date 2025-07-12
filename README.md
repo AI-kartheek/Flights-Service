@@ -29,6 +29,7 @@
 * `index.js` is not created for `errors` folder.
 * I want to know how migrations work.
 * centralize raw strings used in the project.
+* check is it possible to centralize the error types especially from the service file.
 
 # Doubts
 * what happens when we rename the id attribute to lets say cityId in cities table. will this impact anything in future (eg while associating tables)
