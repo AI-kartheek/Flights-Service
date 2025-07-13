@@ -25,6 +25,9 @@
     npm run dev
     ```
 
+# Things I often forget - 
+* foreign key referencing params in addConstraint() is different from the adding constraint directly in the model.
+
 # ToDo
 * `index.js` is not created for `errors` folder.
 * I want to know how migrations work.
