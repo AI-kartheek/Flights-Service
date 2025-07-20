@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    arrivalTime: {
+    arrivalTime: { // arrivalTime and departureTime by defualt will be stored in UTC date time format.
       type: DataTypes.DATE,
       allowNull: false,
     },
@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
     boardingGate: {
       type: DataTypes.STRING,
     },
-    totalSeats: {
+    totalSeats: { // total remaining seats
       type: DataTypes.INTEGER,
       allowNull: false,
     },
