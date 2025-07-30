@@ -85,7 +85,7 @@ async function updateSeats(data) {
     }
     catch (error) {
         console.log(error);
-        throw new AppError('Cannot fetch data of the flight', StatusCodes.INTERNAL_SERVER_ERROR);
+        throw new AppError('Cannot update data of the flight', StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }
 
