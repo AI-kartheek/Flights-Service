@@ -71,6 +71,31 @@ async function getAirplane(req, res) {
 }
 
 /**
+ * PATCH : /airplanes/:id
+ * req-body { capacity: 180 }
+ */
+async function updateAirplane(req, res) {
+    try {
+        const data = {
+            capacity: req.body.capacity,
+        }
+        const airplane = await AirplaneService.updateAirplane(req.params.id, data);
+        SuccessResponse.message = 'Successfully updated an airplane';
+        SuccessResponse.data = airplane;
+        return res
+            .status(StatusCodes.CREATED)
+            .json(SuccessResponse);
+    }
+    catch (error) {
+        ErrorResponse.message = 'Something went wrong while updating an Airplane';
+        ErrorResponse.error = error;
+        return res
+            .status(error.statusCode)
+            .json(ErrorResponse);
+    }
+}
+
+/**
  * DELETE : /airplanes/:id
  * req-body { }
  */
@@ -95,5 +120,6 @@ module.exports = {
     createAirplane,
     getAirplanes,
     getAirplane,
+    updateAirplane,
     destroyAirplane
 }
