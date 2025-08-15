@@ -22,6 +22,23 @@ async function createCity(data) {
     }
 }
 
+async function updateCity(cityId, data) {
+    try {
+        const city = await cityRepository.update(cityId, data);
+        return city;
+    }
+    catch (error) {
+        if (error.name === 'SequelizeValidationError') {
+            let explanation = [];
+            error.errors.forEach(err => {
+                explanation.push(err.message);
+            });
+            throw new AppError(explanation, StatusCodes.BAD_REQUEST);
+        }
+        throw new AppError('Cannot Update an City Object', StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
 async function destroyCity(id) {
     try {
         const response = await cityRepository.destroy(id);
@@ -37,5 +54,6 @@ async function destroyCity(id) {
 
 module.exports = {
     createCity,
+    updateCity,
     destroyCity,
 }

@@ -28,6 +28,31 @@ async function createCity(req, res) {
 }
 
 /**
+ * PATCH : /cities/:id
+ * req-body { name: 'xyz' }
+ */
+async function updateCity(req, res) {
+    try {
+        const data = {
+            name: req.body.name,
+        }
+        const city = await CityService.updateCity(req.params.id, data);
+        SuccessResponse.message = 'Successfully updated an city';
+        SuccessResponse.data = city;
+        return res
+            .status(StatusCodes.CREATED)
+            .json(SuccessResponse);
+    }
+    catch (error) {
+        ErrorResponse.message = 'Something went wrong while updating an City';
+        ErrorResponse.error = error;
+        return res
+            .status(error.statusCode)
+            .json(ErrorResponse);
+    }
+}
+
+/**
  * DELETE : /cities/:id
  * req-body { }
  */
@@ -50,5 +75,6 @@ async function destroyCity(req, res) {
 
 module.exports = {
     createCity,
+    updateCity,
     destroyCity,
 }
