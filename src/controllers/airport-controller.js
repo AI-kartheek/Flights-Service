@@ -73,6 +73,34 @@ async function getAirport(req, res) {
 }
 
 /**
+ * POST : /aiports/:code
+ * req-body { name: 'IGI', code: 'DEL', cityId: 1, address: 'New Delhi' }
+ */
+async function updateAirport(req, res) {
+    try {
+        const data = {
+            name: req.body.name,
+            code: req.body.code,
+            address: req.body.address,
+            cityId: req.body.cityId,
+        };
+        const response = await AirportService.updateAirport(req.params.code, data);
+        SuccessResponse.message = 'Successfully updated an airport';
+        SuccessResponse.data = response;
+        return res
+            .status(StatusCodes.CREATED)
+            .json(SuccessResponse);
+    }
+    catch (error) {
+        ErrorResponse.message = 'Something went wrong while updating an Airport';
+        ErrorResponse.error = error;
+        return res
+            .status(error.statusCode)
+            .json(ErrorResponse);
+    }
+}
+
+/**
  * DELETE : /airports/:id
  * req-body { }
  */
@@ -97,5 +125,6 @@ module.exports = {
     createAirport,
     getAirports,
     getAirport,
+    updateAirport,
     destroyAirport
 }

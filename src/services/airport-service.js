@@ -45,6 +45,23 @@ async function getAirport(id) {
     }
 }
 
+async function updateAirport(code, data) {
+    try {
+        const response = await airportRepository.update(code, data);
+        return response;
+    }
+    catch (error) {
+        if (error.name === 'SequelizeValidationError') {
+            let explanation = [];
+            error.errors.forEach(err => {
+                explanation.push(err.message);
+            });
+            throw new AppError(explanation, StatusCodes.BAD_REQUEST);
+        }
+        throw new AppError('Cannot update an Airport Object', StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
 async function destroyAirport(id) {
     try {
         const response = await airportRepository.destroy(id);
@@ -62,5 +79,6 @@ module.exports = {
     createAirport,
     getAirports,
     getAirport,
+    updateAirport,
     destroyAirport
 }
